@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const navigator = [
   { name: "Home", to: "/" },
   { name: "Cart", to: "/cart" },
+  { name: "Products", to: "/cart" },
 ];
 
 const UL = styled.ul`
@@ -16,7 +17,7 @@ const UL = styled.ul`
 
 const RightNav = ({open}) => {   
   return (
-    <UL open={open} className="bg-gray-500 w-72 fixed top-0 right-0 h-screen pt-14 md:flex flex-col  flex-nowrap md:flex-row md:relative md:w-auto md:h-0 md:pt-0 md:gap-x-4">
+    <UL open={open} className="bg-gray-500 w-72 fixed top-0 right-0 h-screen pt-14 md:flex flex-col  flex-nowrap md:flex-row md:relative md:w-auto md:h-0 md:pt-0 md:gap-x-8 opacity-90 rounded-tl-lg rounded-bl-lg">
       {navigator.map((nav, index) => {
         return (
           <li key={index} className="p-4 text-white md:text-slate-600 md:p-0">

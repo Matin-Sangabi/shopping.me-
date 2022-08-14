@@ -2,8 +2,11 @@ import Layout from "../layout/Layout";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
+import { useCartAction } from "../Provider/cartProvider";
+
 const HomePage = () => {
     const [products , setProducts] = useState([]);
+    const dispatch = useCartAction(); 
     useEffect(()=>{
         const getAllProducts = async () =>{
             try{
@@ -45,9 +48,13 @@ const HomePage = () => {
         );
     }
 
+    const addedToCartHandler = (product) =>{
+      dispatch({type : "ADD_TO_CART" , payload : product});
+    }
+
     const renderProducts = () => {
         return(
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mb-8 px-4 ">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mb-8 px-4 ">
                 {products.map((product)=>{
                     return (
                       <div className="bg-slate-50 p-4 flex flex-col gap-4 mx-auto shadow-md rounded-md" key={product.id}>
@@ -62,7 +69,7 @@ const HomePage = () => {
                             <p>{product.price}</p>
                           </div>
                         </div>
-                        <button className="p-2 rounded-md bg-orange-400 text-slate-200 flex justify-around items-center hover:ring-2 hover:ring-offset-2 hover:ring-orange-400 focus:ring-2 focus:ring-offset-2 focus:ring-orange-400">Add To Cart <span><HiShoppingCart/></span></button>
+                        <button onClick={() => addedToCartHandler(product)} className="p-2 rounded-md bg-orange-400 text-slate-200 flex justify-around items-center hover:ring-2 hover:ring-offset-2 hover:ring-orange-400 focus:ring-2 focus:ring-offset-2 focus:ring-orange-400 hover:shadow-lg hover:shadow-orange-400">Add To Cart <span><HiShoppingCart/></span></button>
                       </div>
                     );
                 })}
