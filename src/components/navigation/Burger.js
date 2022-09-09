@@ -19,7 +19,7 @@ function Burger() {
     <Fragment>
       <div
         onClick={() => setOPen(!open)}
-        className="w-8 h-8 fixed flex justify-around flex-col flex-nowrap top-4 right-5 z-10  md:hidden cursor-pointer"
+        className="w-8 h-8 fixed flex justify-around flex-col flex-nowrap top-4 right-5 z-20  md:hidden cursor-pointer"
       >
         <span
           className={

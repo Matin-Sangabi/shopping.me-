@@ -1,7 +1,8 @@
 export const cartReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case "ADD_TO_CART": {
       //2works => index in cart qnt++ : push item to cart
+      
       const updatedCart = [...state.cart];
       const index = updatedCart.findIndex(
         (cart) => cart.id === action.payload.id
@@ -14,7 +15,40 @@ export const cartReducer = (state, action) => {
         updatedCart[index] = updatedItem;
       }
       //localStorage.setItem('carts' , JSON.stringify({...state , cart : updatedCart}))
-      return { ...state, cart: updatedCart };
+      return {
+        ...state,
+        cart: updatedCart,
+        total: state.total + Number(action.payload.offPrice),
+      };
+    }
+
+    case "REMOVE_PRODUCT": {
+      const updatedCart = [...state.cart];
+      const index = updatedCart.findIndex(
+        (cart) => cart.id === action.payload.id
+      );
+      const updatedItem = { ...updatedCart[index] };
+
+      if (updatedItem.quantity === 1) {
+        const filterCart = updatedCart.filter(
+          (cart) => cart.id !== action.payload.id
+        );
+        return {
+          ...state,
+          cart: filterCart,
+          total: state.total - Number(action.payload.offPrice),
+        };
+      } else {
+        updatedItem.quantity--;
+        updatedCart[index] = updatedItem;
+        return {
+          ...state,
+          cart: updatedCart,
+          total: state.total - Number(action.payload.offPrice),
+        };
+      }
+    }
+
     default:
       return state;
   }

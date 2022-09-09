@@ -6,7 +6,6 @@ import { useCart } from "../Provider/cartProvider";
 
 function CartPage() {
   const {cart} = useCart();
-    console.log(cart)
   return (
     <Layout>
         {cart.length ? (<Cart/>) : (<EmptyCart/>)}
