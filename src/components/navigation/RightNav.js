@@ -22,7 +22,9 @@ const navigator = [
   {name : auth ? 'profile' : 'Login/SinUp' , to:auth ? "/profile" : "/login"}
 ];
   return (
+
     <UL open={open} className="z-10 bg-gray-500 w-72 fixed top-0 right-0 h-screen pt-14 md:flex flex-col  flex-nowrap md:flex-row md:relative md:w-auto md:h-0 md:pt-0 md:gap-x-12 opacity-90 rounded-tl-lg rounded-bl-lg">
+
       {navigator.map((nav, index) => {
         return (
           <li key={index} className="p-4 text-white md:text-slate-600 md:p-0">

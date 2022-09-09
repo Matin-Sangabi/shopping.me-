@@ -1,3 +1,4 @@
+
 import {Routes , Route} from 'react-router-dom';
 import CartPage from './pages/CartPage';
 import CheckOutPage from './pages/checkoutPage';
@@ -27,4 +28,4 @@ const App = () => {
     );
 }
  
-export default App;
+

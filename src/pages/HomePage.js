@@ -2,6 +2,7 @@ import Layout from "../layout/Layout";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
+
 import { useCart, useCartAction } from "../Provider/cartProvider";
 import { checkIncart } from "../utils/checkInCart";
 import { toast } from "react-toastify";
@@ -90,6 +91,7 @@ const HomePage = () => {
                   <HiShoppingCart />
                 </span>
               </button>
+
             </div>
           );
         })}
